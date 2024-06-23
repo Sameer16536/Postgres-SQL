@@ -1,7 +1,7 @@
 ## Postgres SQL practice
 
 ## Connection string :
--- postgresql://test_owner:5TdlAxfFgC9n@ep-rough-sunset-a5i476u8.us-east-2.aws.neon.tech/test?sslmode=require
+-- postgresql://test_owner:passWord?n@ep-rough-sunset-a5i476u8.us-east-2.aws.neon.tech/test?sslmode=require
 
 ## use Pg or pqsql
 1. psql
@@ -43,3 +43,4 @@ CREATE TABLE users (
 pg is a Node.js library that you can use in your backend app to store data in the Postgres DB (similar to mongoose). We will be installing this eventually in our app.
 
        
+password : 5TdlAxfFgC9

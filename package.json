@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/pg": "^8.11.6",
+    "dotenv": "^16.4.5",
+    "pg": "^8.12.0"
+  },
+  "name": "postgres-sql",
+  "description": "-- postgresql://test_owner:5TdlAxfFgC9n@ep-rough-sunset-a5i476u8.us-east-2.aws.neon.tech/test?sslmode=require",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
