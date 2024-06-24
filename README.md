@@ -52,3 +52,4 @@ Transactional Integrity
  
  ![alt text](image-1.png)
  ![alt text](image-2.png)
+ ![image](https://github.com/Sameer16536/Postgres-SQL/assets/100517597/7e508cee-a1f4-481d-8e1c-8dbadd7f2a7c)
