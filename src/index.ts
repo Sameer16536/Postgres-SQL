@@ -29,4 +29,26 @@ const createUsersTable = async()=>{
   console.log(result)
 }
 
-createUsersTable()
+const insertData = async()=>{
+
+    //SQL Injection issue for this code:
+    // try{
+    //     await client.connect()
+    //     const insertQuery = `INSERT INTO users (username,email,password)
+    //                                     VALUES('Sameer69','sameermarathe69@gmail.com','Sameer@2003')`
+    //     const res = await client.query(insertQuery)
+    //     console.log("Insertion successful ",res)
+    // }catch(err){
+    //     console.error('Error during insertion ',err)
+
+    // }finally{
+    //     await client.end()
+    // }
+
+    //Solution::
+    
+
+}
+
+// createUsersTable()
+insertData()
