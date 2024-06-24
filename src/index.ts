@@ -19,7 +19,7 @@ const client = new Client({
 const createUsersTable = async () => {
 
     await client.connect();
-    const result = client.query(`
+    const result = await client.query(`
             CREATE TABLE users(
             id SERIAL PRIMARY KEY,
             username VARCHAR(50) UNIQUE NOT NULL,
@@ -27,6 +27,21 @@ const createUsersTable = async () => {
             password VARCHAR(255) NOT NULL,
             created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP)`)
 
+    console.log(result)
+}
+
+const createAddressTable = async()=>{
+    await client.connect;
+    const result =await client.query(`CREATE TABLE addresses (
+        id SERIAL PRIMARY KEY,
+        user_id INTEGER NOT NULL,
+        city VARCHAR(100) NOT NULL,
+        country VARCHAR(100) NOT NULL,
+        street VARCHAR(255) NOT NULL,
+        pincode VARCHAR(20),
+        created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    );`)
     console.log(result)
 }
 
@@ -90,10 +105,39 @@ const getUser = async(email:string)=>{
 
 
 }
+const insertAddresses = async(user_id:number,city:string,country:string,street:string,pincode:string)=>{
+    await client.connect()
+    const query = `INSERT INTO addresses (user_id, city, country, street, pincode)
+    VALUES ($1,$2,$3,$4,$5);`
+    const values = [user_id,city,country,street,pincode]
+    const res = await client.query(query,values)
+    console.log(res)
+    await client.end()
+}
+const getUserDetailsandAddresses = async(userId:string)=>{
+    try{
+        await client.connect()
+        const query =`
+        SELECT u.id , u.username ,u.email , a.city , a.country, a.street , a.pincode
+        FROM users u
+        JOIN addresses a ON u.id = a.user_id
+        WHERE u.id= 1`
+        const res = await client.query(query)
+        console.log(res)
+}
+catch(err){
+    console.log(err)
+}
+finally{
+    await client.end()
+}
+}
 
 
 // createUsersTable()
+// createAddressTable()
 // insertData()
 // insertData('username5', 'user5@example.com', 'user_password').catch(console.error);
-getUser('sameermarathe15@gmail.com')
-
+// insertAddresses(1, 'New York', 'USA', '123 Broadway St', '10001')
+// getUser('sameermarathe15@gmail.com')
+getUserDetailsandAddresses("1")
